@@ -2563,8 +2563,8 @@
     },
     {
       "name": "segmenfinish",
-      "type": "number",
-      "value": 0
+      "type": "array",
+      "children": []
     }
   ],
   "layouts": [
@@ -11853,22 +11853,10 @@
             },
             {
               "type": {
-                "value": "ArrayTools::Shuffle"
+                "value": "ClearVariableChildren"
               },
               "parameters": [
-                "",
-                "Soal2",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "ArrayTools::Shuffle"
-              },
-              "parameters": [
-                "",
-                "Jawaban2",
-                ""
+                "segmenfinish"
               ]
             }
           ],
@@ -12345,6 +12333,15 @@
                     },
                     {
                       "type": {
+                        "value": "PushNumber"
+                      },
+                      "parameters": [
+                        "segmenfinish",
+                        "Kata_Benar.Animation::Index()+1"
+                      ]
+                    },
+                    {
+                      "type": {
                         "value": "DebuggerTools::ConsoleLog"
                       },
                       "parameters": [
@@ -12550,16 +12547,6 @@
                     "hasil",
                     "+",
                     "1"
-                  ]
-                },
-                {
-                  "type": {
-                    "value": "SetNumberVariable"
-                  },
-                  "parameters": [
-                    "segmenfinish",
-                    "=",
-                    "Kata_Benar.Animation::Index()"
                   ]
                 }
               ],
@@ -12770,7 +12757,7 @@
         "gridColor": 10401023,
         "gridAlpha": 0.8,
         "snap": false,
-        "zoomFactor": 1.2121641972173687,
+        "zoomFactor": 2.5143672964987567,
         "windowMask": false,
         "selectedLayer": ""
       },
@@ -14028,7 +14015,7 @@
                     "Barang",
                     "Animation",
                     "=",
-                    "segmenfinish"
+                    "segmenfinish[counter87]"
                   ]
                 },
                 {

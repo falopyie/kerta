@@ -1450,6 +1450,26 @@
         "preloadAsSound": false,
         "preloadInCache": false,
         "userAdded": false
+      },
+      {
+        "file": "Sound/SFX/sfx kereta 3 - kerta.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "Sound\\SFX\\sfx kereta 3 - kerta.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
+        "preloadInCache": false,
+        "userAdded": false
+      },
+      {
+        "file": "Sound/BGM/finish bgm - kerta.wav",
+        "kind": "audio",
+        "metadata": "",
+        "name": "Sound\\BGM\\finish bgm - kerta.wav",
+        "preloadAsMusic": false,
+        "preloadAsSound": false,
+        "preloadInCache": false,
+        "userAdded": false
       }
     ],
     "resourceFolders": []
@@ -2850,9 +2870,9 @@
         "gridColor": 10401023,
         "gridAlpha": 0.8,
         "snap": false,
-        "zoomFactor": 0.32169117647058953,
+        "zoomFactor": 0.25504554733543466,
         "windowMask": false,
-        "selectedLayer": "Setting"
+        "selectedLayer": "Level"
       },
       "objectsGroups": [],
       "variables": [
@@ -3493,8 +3513,8 @@
           "name": "Simpan",
           "persistentUuid": "402375ae-84fd-46af-be82-b892d2fed5fb",
           "width": 0,
-          "x": 423,
-          "y": 516,
+          "x": 570,
+          "y": 518,
           "zOrder": 33,
           "numberProperties": [],
           "stringProperties": [],
@@ -3505,12 +3525,12 @@
           "customSize": false,
           "height": 0,
           "keepRatio": true,
-          "layer": "Setting",
-          "name": "Batal",
-          "persistentUuid": "98fbffd1-6695-4f07-b8f5-58e6dd477673",
+          "layer": "Level",
+          "name": "SilangLevel",
+          "persistentUuid": "00966481-73f5-41bc-a93a-01e9282696a1",
           "width": 0,
-          "x": 685,
-          "y": 519,
+          "x": 1128,
+          "y": -190,
           "zOrder": 34,
           "numberProperties": [],
           "stringProperties": [],
@@ -4066,7 +4086,18 @@
           "updateIfNotVisible": false,
           "variables": [],
           "effects": [],
-          "behaviors": [],
+          "behaviors": [
+            {
+              "name": "ButtonFSM",
+              "type": "ButtonStates::ButtonFSM",
+              "ShouldCheckHovering": true,
+              "State": "Idle",
+              "TouchId": 0,
+              "TouchIsInside": false,
+              "MouseIsInside": false,
+              "Index": 2.0247e-320
+            }
+          ],
           "animations": [
             {
               "name": "",
@@ -5243,6 +5274,81 @@
           "effects": [],
           "behaviors": [],
           "content": {}
+        },
+        {
+          "adaptCollisionMaskAutomatically": true,
+          "assetStoreId": "",
+          "name": "SilangLevel",
+          "type": "Sprite",
+          "updateIfNotVisible": false,
+          "variables": [],
+          "effects": [],
+          "behaviors": [
+            {
+              "name": "ButtonFSM",
+              "type": "ButtonStates::ButtonFSM",
+              "ShouldCheckHovering": true,
+              "State": "Idle",
+              "TouchId": 0,
+              "TouchIsInside": false,
+              "MouseIsInside": false,
+              "Index": 2.0247e-320
+            },
+            {
+              "name": "Tween",
+              "type": "Tween::TweenBehavior"
+            }
+          ],
+          "animations": [
+            {
+              "name": "",
+              "useMultipleDirections": false,
+              "directions": [
+                {
+                  "looping": false,
+                  "timeBetweenFrames": 0.08,
+                  "sprites": [
+                    {
+                      "hasCustomCollisionMask": true,
+                      "image": "Silang.png",
+                      "points": [],
+                      "originPoint": {
+                        "name": "origine",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "centerPoint": {
+                        "automatic": true,
+                        "name": "centre",
+                        "x": 0,
+                        "y": 0
+                      },
+                      "customCollisionMask": [
+                        [
+                          {
+                            "x": 0,
+                            "y": 0
+                          },
+                          {
+                            "x": 98,
+                            "y": 0
+                          },
+                          {
+                            "x": 98,
+                            "y": 96
+                          },
+                          {
+                            "x": 0,
+                            "y": 96
+                          }
+                        ]
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       ],
       "objectsFolderStructure": {
@@ -5309,6 +5415,9 @@
             "objectName": "Silang"
           },
           {
+            "objectName": "SilangLevel"
+          },
+          {
             "objectName": "JudulPengaturan"
           },
           {
@@ -5345,6 +5454,16 @@
             }
           ],
           "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "GantiMusik",
+                "=",
+                "0"
+              ]
+            },
             {
               "type": {
                 "value": "Cache"
@@ -5437,6 +5556,15 @@
                 "",
                 "",
                 ""
+              ]
+            },
+            {
+              "type": {
+                "value": "ShowLayer"
+              },
+              "parameters": [
+                "",
+                "\"Level\""
               ]
             }
           ],
@@ -5533,6 +5661,21 @@
                 },
                 {
                   "type": {
+                    "value": "Tween::TweenBehavior::AddObjectPositionTween2"
+                  },
+                  "parameters": [
+                    "SilangLevel",
+                    "Tween",
+                    "\"\"",
+                    "1130",
+                    "55",
+                    "\"linear\"",
+                    "1",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
                     "value": "Montre"
                   },
                   "parameters": [
@@ -5587,16 +5730,6 @@
                 }
               ],
               "actions": [
-                {
-                  "type": {
-                    "value": "ActivateBehavior"
-                  },
-                  "parameters": [
-                    "Level2",
-                    "ButtonFSM",
-                    "yes"
-                  ]
-                },
                 {
                   "type": {
                     "value": "Tween::TweenBehavior::AddObjectPositionTween2"
@@ -5667,6 +5800,21 @@
                     "\"\"",
                     "205",
                     "350",
+                    "\"linear\"",
+                    "1",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::TweenBehavior::AddObjectPositionTween2"
+                  },
+                  "parameters": [
+                    "SilangLevel",
+                    "Tween",
+                    "\"\"",
+                    "1130",
+                    "55",
                     "\"linear\"",
                     "1",
                     ""
@@ -5751,16 +5899,6 @@
               "actions": [
                 {
                   "type": {
-                    "value": "ActivateBehavior"
-                  },
-                  "parameters": [
-                    "Level2",
-                    "ButtonFSM",
-                    "yes"
-                  ]
-                },
-                {
-                  "type": {
                     "value": "Tween::TweenBehavior::AddObjectPositionTween2"
                   },
                   "parameters": [
@@ -5829,6 +5967,21 @@
                     "\"\"",
                     "205",
                     "350",
+                    "\"linear\"",
+                    "1",
+                    ""
+                  ]
+                },
+                {
+                  "type": {
+                    "value": "Tween::TweenBehavior::AddObjectPositionTween2"
+                  },
+                  "parameters": [
+                    "SilangLevel",
+                    "Tween",
+                    "\"\"",
+                    "1130",
+                    "55",
                     "\"linear\"",
                     "1",
                     ""
@@ -6171,109 +6324,6 @@
                 "ButtonFSM",
                 "yes"
               ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "volume.musik",
-                "=",
-                "50"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "volume.suara",
-                "=",
-                "50"
-              ]
-            }
-          ]
-        },
-        {
-          "type": "BuiltinCommonInstructions::Standard",
-          "conditions": [
-            {
-              "type": {
-                "value": "ButtonStates::ButtonFSM::IsClicked"
-              },
-              "parameters": [
-                "Batal",
-                "ButtonFSM",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "BuiltinCommonInstructions::Once"
-              },
-              "parameters": []
-            }
-          ],
-          "actions": [
-            {
-              "type": {
-                "value": "HideLayer"
-              },
-              "parameters": [
-                "",
-                "\"Setting\""
-              ]
-            },
-            {
-              "type": {
-                "value": "Cache"
-              },
-              "parameters": [
-                "Background__Layer"
-              ]
-            },
-            {
-              "type": {
-                "value": "PlaySoundCanal"
-              },
-              "parameters": [
-                "",
-                "Sound\\SFX\\button batal di setting - kerta.wav",
-                "3",
-                "",
-                "",
-                ""
-              ]
-            },
-            {
-              "type": {
-                "value": "ActivateBehavior"
-              },
-              "parameters": [
-                "Mulai",
-                "ButtonFSM",
-                "yes"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "volume.musik",
-                "=",
-                "50"
-              ]
-            },
-            {
-              "type": {
-                "value": "SetNumberVariable"
-              },
-              "parameters": [
-                "volume.suara",
-                "=",
-                "50"
-              ]
             }
           ]
         },
@@ -6426,6 +6476,159 @@
               ]
             }
           ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "ButtonStates::ButtonFSM::IsClicked"
+              },
+              "parameters": [
+                "SilangLevel",
+                "ButtonFSM",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "BuiltinCommonInstructions::Once"
+              },
+              "parameters": []
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "HideLayer"
+              },
+              "parameters": [
+                "",
+                "\"Level\""
+              ]
+            },
+            {
+              "type": {
+                "value": "Cache"
+              },
+              "parameters": [
+                "Background__Layer"
+              ]
+            },
+            {
+              "type": {
+                "value": "PlaySoundCanal"
+              },
+              "parameters": [
+                "",
+                "Sound\\SFX\\button x di setting - kerta.wav",
+                "3",
+                "",
+                "",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "Mulai",
+                "ButtonFSM",
+                "yes"
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectPositionTween2"
+              },
+              "parameters": [
+                "Level1",
+                "Tween",
+                "\"\"",
+                "277",
+                "911",
+                "\"linear\"",
+                "1",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectPositionTween2"
+              },
+              "parameters": [
+                "Level2",
+                "Tween",
+                "\"\"",
+                "543",
+                "911",
+                "\"linear\"",
+                "1",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectPositionTween2"
+              },
+              "parameters": [
+                "Level3",
+                "Tween",
+                "\"\"",
+                "805",
+                "911",
+                "\"linear\"",
+                "1",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectPositionTween2"
+              },
+              "parameters": [
+                "Judul_Level",
+                "Tween",
+                "\"\"",
+                "350",
+                "-293",
+                "\"linear\"",
+                "1",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectPositionTween2"
+              },
+              "parameters": [
+                "Bubble_Level",
+                "Tween",
+                "\"\"",
+                "205",
+                "735",
+                "\"linear\"",
+                "1",
+                ""
+              ]
+            },
+            {
+              "type": {
+                "value": "Tween::TweenBehavior::AddObjectPositionTween2"
+              },
+              "parameters": [
+                "SilangLevel",
+                "Tween",
+                "\"\"",
+                "1130",
+                "-190",
+                "\"linear\"",
+                "1",
+                ""
+              ]
+            }
+          ]
         }
       ],
       "layers": [
@@ -6506,7 +6709,7 @@
           "isLocked": false,
           "name": "Level",
           "renderingType": "",
-          "visibility": true,
+          "visibility": false,
           "cameras": [],
           "effects": [
             {
@@ -9122,6 +9325,13 @@
       },
       "events": [
         {
+          "type": "BuiltinCommonInstructions::Link",
+          "include": {
+            "includeConfig": 0
+          },
+          "target": "bgm"
+        },
+        {
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -9140,6 +9350,16 @@
             }
           ],
           "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "GantiMusik",
+                "=",
+                "1"
+              ]
+            },
             {
               "type": {
                 "value": "SetNumberVariable"
@@ -9355,7 +9575,7 @@
               },
               "parameters": [
                 "",
-                "Sound\\SFX\\sfx kereta - kerta.wav.wav",
+                "Sound\\SFX\\sfx kereta 3 - kerta.wav",
                 "3",
                 "",
                 "",
@@ -9801,6 +10021,33 @@
                 "",
                 "\"Finish1\"",
                 ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "Tween::IsPlaying"
+              },
+              "parameters": [
+                "Finish",
+                "Tween",
+                "\"Finish\""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "barang_jawab",
+                "Draggable",
+                "no"
               ]
             }
           ]
@@ -11076,6 +11323,13 @@
       },
       "events": [
         {
+          "type": "BuiltinCommonInstructions::Link",
+          "include": {
+            "includeConfig": 0
+          },
+          "target": "bgm"
+        },
+        {
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -11094,6 +11348,16 @@
             }
           ],
           "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "GantiMusik",
+                "=",
+                "2"
+              ]
+            },
             {
               "type": {
                 "value": "ReadStringFromStorage"
@@ -14026,6 +14290,13 @@
       },
       "events": [
         {
+          "type": "BuiltinCommonInstructions::Link",
+          "include": {
+            "includeConfig": 0
+          },
+          "target": "bgm"
+        },
+        {
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -14044,6 +14315,16 @@
             }
           ],
           "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "GantiMusik",
+                "=",
+                "1"
+              ]
+            },
             {
               "type": {
                 "value": "SetNumberVariable"
@@ -14690,7 +14971,7 @@
               },
               "parameters": [
                 "",
-                "Sound\\SFX\\sfx kereta - kerta.wav.wav",
+                "Sound\\SFX\\sfx kereta 3 - kerta.wav",
                 "3",
                 "",
                 "",
@@ -15008,6 +15289,33 @@
               "parameters": [
                 "",
                 "\"Finish2\"",
+                ""
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "Tween::IsPlaying"
+              },
+              "parameters": [
+                "jalan",
+                "Tween",
+                "\"Jalan\""
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "barang_jawab",
+                "Draggable",
                 ""
               ]
             }
@@ -16341,6 +16649,13 @@
       },
       "events": [
         {
+          "type": "BuiltinCommonInstructions::Link",
+          "include": {
+            "includeConfig": 0
+          },
+          "target": "bgm"
+        },
+        {
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -16359,6 +16674,16 @@
             }
           ],
           "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "GantiMusik",
+                "=",
+                "2"
+              ]
+            },
             {
               "type": {
                 "value": "ReadStringFromStorage"
@@ -19433,6 +19758,13 @@
       },
       "events": [
         {
+          "type": "BuiltinCommonInstructions::Link",
+          "include": {
+            "includeConfig": 0
+          },
+          "target": "bgm"
+        },
+        {
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -19451,6 +19783,16 @@
             }
           ],
           "actions": [
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "GantiMusik",
+                "=",
+                "1"
+              ]
+            },
             {
               "type": {
                 "value": "SetNumberVariable"
@@ -20107,7 +20449,7 @@
               },
               "parameters": [
                 "",
-                "Sound\\SFX\\sfx kereta - kerta.wav.wav",
+                "Sound\\SFX\\sfx kereta 3 - kerta.wav",
                 "3",
                 "",
                 "",
@@ -20416,6 +20758,22 @@
               ]
             }
           ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "value": "Tween::IsPlaying"
+              },
+              "parameters": [
+                "jalan",
+                "Tween",
+                "\"Jalan\""
+              ]
+            }
+          ],
+          "actions": []
         }
       ],
       "layers": [
@@ -21796,6 +22154,13 @@
       },
       "events": [
         {
+          "type": "BuiltinCommonInstructions::Link",
+          "include": {
+            "includeConfig": 0
+          },
+          "target": "bgm"
+        },
+        {
           "type": "BuiltinCommonInstructions::Standard",
           "conditions": [
             {
@@ -21859,6 +22224,16 @@
                 "",
                 "",
                 ""
+              ]
+            },
+            {
+              "type": {
+                "value": "SetNumberVariable"
+              },
+              "parameters": [
+                "GantiMusik",
+                "=",
+                "2"
               ]
             }
           ],
@@ -22149,11 +22524,12 @@
           "conditions": [
             {
               "type": {
+                "inverted": true,
                 "value": "MusicPlaying"
               },
               "parameters": [
                 "",
-                "1"
+                "2"
               ]
             },
             {
@@ -22212,6 +22588,73 @@
         },
         {
           "type": "BuiltinCommonInstructions::Standard",
+          "conditions": [
+            {
+              "type": {
+                "inverted": true,
+                "value": "MusicPlaying"
+              },
+              "parameters": [
+                "",
+                "4"
+              ]
+            },
+            {
+              "type": {
+                "value": "NumberVariable"
+              },
+              "parameters": [
+                "GantiMusik",
+                "=",
+                "2"
+              ]
+            }
+          ],
+          "actions": [
+            {
+              "type": {
+                "value": "PlayMusicCanal"
+              },
+              "parameters": [
+                "",
+                "Sound\\BGM\\finish bgm - kerta.wav",
+                "4",
+                "",
+                "",
+                ""
+              ]
+            }
+          ],
+          "events": [
+            {
+              "type": "BuiltinCommonInstructions::Standard",
+              "conditions": [
+                {
+                  "type": {
+                    "value": "MusicPlaying"
+                  },
+                  "parameters": [
+                    "",
+                    "4"
+                  ]
+                }
+              ],
+              "actions": [
+                {
+                  "type": {
+                    "value": "StopMusicCanal"
+                  },
+                  "parameters": [
+                    "",
+                    "2"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "BuiltinCommonInstructions::Standard",
           "conditions": [],
           "actions": [
             {
@@ -22232,6 +22675,17 @@
               "parameters": [
                 "",
                 "2",
+                "=",
+                "volume.musik"
+              ]
+            },
+            {
+              "type": {
+                "value": "ModVolumeMusicCanal"
+              },
+              "parameters": [
+                "",
+                "4",
                 "=",
                 "volume.musik"
               ]

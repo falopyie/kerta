@@ -20773,7 +20773,18 @@
               ]
             }
           ],
-          "actions": []
+          "actions": [
+            {
+              "type": {
+                "value": "ActivateBehavior"
+              },
+              "parameters": [
+                "barang_jawab",
+                "Draggable",
+                ""
+              ]
+            }
+          ]
         }
       ],
       "layers": [
